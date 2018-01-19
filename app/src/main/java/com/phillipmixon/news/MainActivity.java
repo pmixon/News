@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsEntry>> {
 
-    private static final String DATA_URL = "http://content.guardianapis.com/search?q=debates&api-key=test";
+    private static final String DATA_URL = "https://content.guardianapis.com/search?q=android&show-tags=contributor&order-by=relevance&api-key=test";
     private ArrayAdapter<NewsEntry> newsEntryArrayAdapter;
 
     @Override

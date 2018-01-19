@@ -44,11 +44,25 @@ public final class QueryUtils {
                 String webPublicationDate = currentNewsObj.getString("webPublicationDate");
                 String sectionName = currentNewsObj.getString("sectionName");
 
-                String author;
-                if (currentNewsObj.has("author")) {
-                    author = currentNewsObj.getString("author");
-                } else {
-                    author = "";
+                JSONArray tags = currentNewsObj.getJSONArray("tags");
+
+                JSONObject tagZero = tags.optJSONObject(0);
+
+                String author = "";
+                if (tagZero != null) {
+                    String authorFirstName = tagZero.optString("firstName");
+                    String authorLastName = tagZero.optString("lastName");
+
+                    if (authorFirstName != null) {
+                        String formattedFirstName = authorFirstName.substring(0, 1).toUpperCase() + authorFirstName.substring(1);
+                        author = formattedFirstName;
+
+                    }
+
+                    if (authorLastName != null) {
+                        String formmatedLastName = authorLastName.substring(0, 1).toUpperCase() + authorLastName.substring(1);
+                        author = author + " " + formmatedLastName;
+                    }
                 }
 
                 newsEntries.add(new NewsEntry(webTitle, sectionName, webPublicationDate, webUrl, author));
