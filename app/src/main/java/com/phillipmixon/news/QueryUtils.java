@@ -44,7 +44,14 @@ public final class QueryUtils {
                 String webPublicationDate = currentNewsObj.getString("webPublicationDate");
                 String sectionName = currentNewsObj.getString("sectionName");
 
-                newsEntries.add(new NewsEntry(webTitle, sectionName, webPublicationDate, webUrl));
+                String author;
+                if (currentNewsObj.has("author")) {
+                    author = currentNewsObj.getString("author");
+                } else {
+                    author = "";
+                }
+
+                newsEntries.add(new NewsEntry(webTitle, sectionName, webPublicationDate, webUrl, author));
             }
 
         } catch (JSONException e) {

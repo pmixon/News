@@ -22,6 +22,14 @@ public class NewsEntry {
         this.section = section;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getDate_published() {
         return date_published;
     }
@@ -33,6 +41,7 @@ public class NewsEntry {
     private String title;
     private String section;
     private String date_published;
+    private String author;
 
     public String getWebUrl() {
         return webUrl;
@@ -44,10 +53,11 @@ public class NewsEntry {
 
     private String webUrl;
 
-    public NewsEntry(String title, String section, String date_published, String webUrl) {
+    public NewsEntry(String title, String section, String date_published, String webUrl, String author) {
         this.title = title;
         this.section = section;
         this.date_published = date_published;
         this.webUrl = webUrl;
+        this.author = author;
     }
 }
